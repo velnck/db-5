@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users
 	name varchar(256),
 	phone_number varchar NOT NULL
 );
+ALTER TABLE users ADD COLUMN is_active BOOLEAN;
 
 
 CREATE TABLE IF NOT EXISTS customers
@@ -23,6 +24,7 @@ CREATE TABLE IF NOT EXISTS employees
 	user_id serial NOT NULL UNIQUE,
 	CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+ALTER TABLE employees ADD COLUMN salary decimal CHECK (salary >= 0);
 
 
 CREATE TABLE IF NOT EXISTS logs
@@ -31,6 +33,17 @@ CREATE TABLE IF NOT EXISTS logs
 	user_id serial,
 	message varchar(500) NOT NULL,
 	CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+DROP TABLE IF EXISTS logs;
+CREATE TABLE logs
+(
+    id serial PRIMARY KEY,
+	user_id serial,
+    time TIMESTAMP NOT NULL,
+	message varchar(500) NOT NULL,
+	CONSTRAINT fk_user FOREIGN KEY(user_id) 
+        REFERENCES users(id) ON DELETE RESTRICT
 );
 
 
@@ -81,20 +94,25 @@ CREATE TABLE IF NOT EXISTS books
 		FOREIGN KEY(supplier_id) 
 			REFERENCES suppliers(id) ON DELETE SET NULL
 );
+ALTER TABLE books ADD COLUMN quantity INTEGER;
 
 
 CREATE TABLE IF NOT EXISTS orders
 (
 	id serial PRIMARY KEY,
-	delivery_address varchar NOT NULL,
+	delivery_address varchar,
 	creation_date timestamp,
-	delivery_date date NOT NULL,
+	delivery_date date,
 	customer_id serial,
-	sum_total decimal CHECK (sum_total > 0),
+	sum_total decimal CHECK (sum_total >= 0),
 	CONSTRAINT fk_customer 
 		FOREIGN KEY(customer_id) 
 			REFERENCES customers(id) ON DELETE SET NULL
 );
+ALTER TABLE orders ADD COLUMN is_commited BOOLEAN;
+ALTER TABLE orders ALTER COLUMN sum_total
+SET DEFAULT 0;
+
 
 
 CREATE TABLE IF NOT EXISTS reviews
@@ -134,3 +152,6 @@ CREATE TABLE IF NOT EXISTS orders_books
 	book_id serial REFERENCES books(id) ON DELETE CASCADE,
 	CONSTRAINT orders_books_pk PRIMARY KEY(order_id, book_id)
 );
+
+ALTER TABLE orders_books ADD COLUMN quantity INTEGER NOT NULL DEFAULT 1;
+

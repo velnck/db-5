@@ -1,4 +1,4 @@
-SELECT logs.id, users.username, message FROM logs
+SELECT logs.id, users.username, time, message FROM logs
 LEFT JOIN users ON logs.user_id = users.id;
 
 SELECT COUNT(id) AS orders_quantity, customer_id 
@@ -38,7 +38,7 @@ WHERE EXISTS (SELECT FROM customers WHERE user_id = users.id);
 SELECT * FROM logs JOIN users ON logs.user_id = users.id
 WHERE EXISTS (SELECT FROM employees WHERE user_id = users.id);
 
-SELECT books.id, books.title, order_id FROM orders_books
+SELECT books.id, books.title, order_id, orders_books.quantity FROM orders_books
 JOIN books ON books.id = orders_books.book_id
 WHERE order_id = 4;
 
@@ -55,8 +55,10 @@ JOIN authors ON authors_books.author_id = authors.id
 WHERE book_id = 21
 GROUP BY books.id;
 
+
 SELECT books.id, books.title,
-CASE WHEN price IS NULL THEN 'Out of stock'
+CASE WHEN quantity IS NULL OR quantity = 0
+THEN 'Out of stock'
 ELSE CAST(price AS VARCHAR) END
 FROM books;
 
@@ -69,6 +71,6 @@ JOIN authors ON authors_books.author_id = authors.id
 GROUP BY books.id;
 
 SELECT * FROM books_with_authors
-WHERE book_id = 21;
+WHERE id = 21;
 
 SELECT * FROM books_with_authors;

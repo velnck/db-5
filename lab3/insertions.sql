@@ -1,29 +1,29 @@
-INSERT INTO users (name, username, password, email, phone_number) VALUES
-('Василий Тёркин', 'vasiliy', 'VaSiLiY111', 'vasiliy@gmail.com', '80295556677'),
-('Сабрина Волкова', 'sabrinavolkova', 'sabrina_password', 'abrinavolkova@gmail.com', '80297642958'),
-('Карина Кузнецова', 'karinakuznetsova', 'k8uJ.d', 'kuznetsova@gmail.com', '80338726452'),
-('Андрей Поляков', 'andreyyy', 'andreyyy_password', 'andreyyy@gmail.com', '80298254638'),
-('Константин Пыжов', 'puzhov', 'puzhov_password', 'puzhov@gmail.com', '80290989928'),
-('Валерий Яковлев', 'valeriyyy', 'valeriyyy_password', 'valeriyyy@gmail.com', '80297225534'),
-('Мария Васнецова', 'mary_v', 'mko98Jld', 'mary_v@gmail.com', '80291114352'),
-('Виктория Капустина', 'victory_cap', '89MJIOijd', 'victory_cap@gmail.com', '80298887465'),
-('Владимир Асеев', 'vova_aseev', 'vova_aseev_password', 'vova_aseev@gmail.com', '80290184711'),
-('Ананстасия Романова', 'nastya_romaniva', 'nastya_romaniva_password', 'nastya_romaniva@gmail.com', '80298887722'),
-('Дмитрий Колпаков', 'dm_kolpakov', 'dm_kolpakov_password', 'dm_kolpakov@gmail.com', '80297899974'),
-('Александра', 'alesya', 'UH891Jkja', 'alesya@gmail.com', '80299011233'),
-('Валерия Антонова', 'valeria_annt', 'valeria_annt_password', 'valeria_annt@gmail.com', '80294343435'),
-('Арина Филатова', 'arinochka', 'arinochka_password', 'arinochka@gmail.com', '80298767868'),
-('Аглая', 'aglaya___', 'aglaya____password', 'aglaya___@gmail.com', '80299867678'),
-('Алиса Полякова', 'polisa', 'polisa_password', 'polisa@gmail.com', '80295362884'),
-('Иван Казаков', 'vanyakazak', 'km0OKmdei', 'vanyakazak@gmail.com', '80290925455'),
-('Леонид', 'kloyn', 'kloyn_password', 'kloyn@gmail.com', '80292325153'),
-('Константин Тихомиров', 'konstanta', 'konstanta_password', 'konstanta@gmail.com', '802986767365'),
-('Виктория', 'vikavika', 'vikavika_password', 'vikavika@gmail.com', '80290989047'),
-('Анна Морозова', 'annna', 'jfNmc8Jqoijd.ck', 'annna@gmail.com', '802976768453'),
-('Тимур Королёв', 'korol', 'korol_password', 'korol@gmail.com', '80297366453'),
-('Есения Трифонова', 'eseniya', 'esLpdeik.AD', 'eseniya@gmail.com', '80298571977'),
-('Полина Непочелович', 'polinochka', 'polinochka_password', 'polinochka@gmail.com', '80290900689'),
-('Настя Потапова', 'nastenka', 'Kio5JU', 'nastenka@gmail.com', '80292345142');
+INSERT INTO users (name, username, password, email, phone_number, is_active) VALUES
+('Василий Тёркин', 'vasiliy', 'VaSiLiY111', 'vasiliy@gmail.com', '80295556677', TRUE),
+('Сабрина Волкова', 'sabrinavolkova', 'sabrina_password', 'abrinavolkova@gmail.com', '80297642958', TRUE),
+('Карина Кузнецова', 'karinakuznetsova', 'k8uJ.d', 'kuznetsova@gmail.com', '80338726452', TRUE),
+('Андрей Поляков', 'andreyyy', 'andreyyy_password', 'andreyyy@gmail.com', '80298254638', TRUE),
+('Константин Пыжов', 'puzhov', 'puzhov_password', 'puzhov@gmail.com', '80290989928', TRUE),
+('Валерий Яковлев', 'valeriyyy', 'valeriyyy_password', 'valeriyyy@gmail.com', '80297225534', TRUE),
+('Мария Васнецова', 'mary_v', 'mko98Jld', 'mary_v@gmail.com', '80291114352', TRUE),
+('Виктория Капустина', 'victory_cap', '89MJIOijd', 'victory_cap@gmail.com', '80298887465', TRUE),
+('Владимир Асеев', 'vova_aseev', 'vova_aseev_password', 'vova_aseev@gmail.com', '80290184711', TRUE),
+('Ананстасия Романова', 'nastya_romaniva', 'nastya_romaniva_password', 'nastya_romaniva@gmail.com', '80298887722', TRUE),
+('Дмитрий Колпаков', 'dm_kolpakov', 'dm_kolpakov_password', 'dm_kolpakov@gmail.com', '80297899974', TRUE),
+('Александра', 'alesya', 'UH891Jkja', 'alesya@gmail.com', '80299011233', TRUE),
+('Валерия Антонова', 'valeria_annt', 'valeria_annt_password', 'valeria_annt@gmail.com', '80294343435'), TRUE,
+('Арина Филатова', 'arinochka', 'arinochka_password', 'arinochka@gmail.com', '80298767868', TRUE),
+('Аглая', 'aglaya___', 'aglaya____password', 'aglaya___@gmail.com', '80299867678', TRUE),
+('Алиса Полякова', 'polisa', 'polisa_password', 'polisa@gmail.com', '80295362884', TRUE),
+('Иван Казаков', 'vanyakazak', 'km0OKmdei', 'vanyakazak@gmail.com', '80290925455', TRUE),
+('Леонид', 'kloyn', 'kloyn_password', 'kloyn@gmail.com', '80292325153', TRUE),
+('Константин Тихомиров', 'konstanta', 'konstanta_password', 'konstanta@gmail.com', '802986767365', TRUE),
+('Виктория', 'vikavika', 'vikavika_password', 'vikavika@gmail.com', '80290989047', TRUE),
+('Анна Морозова', 'annna', 'jfNmc8Jqoijd.ck', 'annna@gmail.com', '802976768453', TRUE),
+('Тимур Королёв', 'korol', 'korol_password', 'korol@gmail.com', '80297366453', TRUE),
+('Есения Трифонова', 'eseniya', 'esLpdeik.AD', 'eseniya@gmail.com', '80298571977', TRUE),
+('Полина Непочелович', 'polinochka', 'polinochka_password', 'polinochka@gmail.com', '80290900689', TRUE),
+('Настя Потапова', 'nastenka', 'Kio5JU', 'nastenka@gmail.com', '80292345142', TRUE);
 
 
 INSERT INTO customers (user_id) VALUES
@@ -46,15 +46,15 @@ INSERT INTO customers (user_id) VALUES
 (25);
 
 
-INSERT INTO employees (user_id) VALUES
-(4),
-(7),
-(12),
-(13),
-(16),
-(20),
-(22),
-(24);
+INSERT INTO employees (user_id, salary) VALUES
+(4, 1000.00),
+(7, 1000.00),
+(12, 1000.00),
+(13, 1400.00),
+(16, 1400.00),
+(20, 1400.00),
+(22, 1900.00),
+(24, 1900.00);
 
 
 INSERT INTO publishers (name, address) VALUES
@@ -157,17 +157,17 @@ INSERT INTO books (title, isbn, publisher_id, price, supplier_id) VALUES
 
 
 INSERT INTO orders (delivery_address, creation_date, 
-delivery_date, customer_id, sum_total) VALUES
-('г. Минск, ул. Маяковского, д. 211', '2023-10-11 12:16:09', '2023-10-16', 1, 60.22),
-('г. Минск, ул. Восточная, д. 37, кв. 14', '2023-10-12 12:26:09', '2023-10-16', 3, 7.88),
-('г. Минск, ул. Аэродромная, д. 112, кв. 21', '2023-10-13 12:36:09', '2023-10-15', 5, 30.90),
-('г. Минск, ул. Николы Теслы, д. 44, кв. 106', '2023-10-14 12:46:09', '2023-10-15', 7, 45.28),
-('г. Минск, ул. Лилии Карастояновой, д. 56, кв. 65', '2023-10-11 18:56:09', '2023-10-15', 9, 14.87),
-('г. Минск, ул. Каховская, д. 6, кв. 5', '2023-10-12 17:56:09', '2023-10-16', 2, 37.85),
-('г. Минск, ул. Брестская, д. 78, кв. 24', '2023-10-13 16:56:09', '2023-10-16', 4, 13.45),
-('г. Минск, ул. Богдановича, д. 3, кв. 55', '2023-10-14 15:56:09', '2023-10-15', 6, 62.68),
-('г. Минск, ул. Брестская, д. 35, кв. 34', '2023-10-11 14:56:09', '2023-10-14', 8, 42.99),
-('г. Минск, пр-т Победителей, д. 155, кв. 7', '2023-10-12 13:56:09', '2023-10-14', 11, 15.68);
+delivery_date, customer_id, sum_total, is_commited) VALUES
+('г. Минск, ул. Маяковского, д. 211', '2023-10-11 12:16:09', '2023-10-16', 1, 60.22, FALSE),
+('г. Минск, ул. Восточная, д. 37, кв. 14', '2023-10-12 12:26:09', '2023-10-16', 3, 7.88, FALSE),
+('г. Минск, ул. Аэродромная, д. 112, кв. 21', '2023-10-13 12:36:09', '2023-10-15', 5, 30.90, TRUE),
+('г. Минск, ул. Николы Теслы, д. 44, кв. 106', '2023-10-14 12:46:09', '2023-10-15', 7, 45.28, TRUE),
+('г. Минск, ул. Лилии Карастояновой, д. 56, кв. 65', '2023-10-11 18:56:09', '2023-10-15', 9, 14.87, TRUE),
+('г. Минск, ул. Каховская, д. 6, кв. 5', '2023-10-12 17:56:09', '2023-10-16', 2, 37.85, FALSE),
+('г. Минск, ул. Брестская, д. 78, кв. 24', '2023-10-13 16:56:09', '2023-10-16', 4, 13.45, FALSE),
+('г. Минск, ул. Богдановича, д. 3, кв. 55', '2023-10-14 15:56:09', '2023-10-15', 6, 62.68, TRUE),
+('г. Минск, ул. Брестская, д. 35, кв. 34', '2023-10-11 14:56:09', '2023-10-14', 8, 42.99, TRUE),
+('г. Минск, пр-т Победителей, д. 155, кв. 7', '2023-10-12 13:56:09', '2023-10-14', 11, 15.68, FALSE);
 
 
 INSERT INTO reviews (review_author_id, book_id, review_text) VALUES
@@ -181,19 +181,19 @@ INSERT INTO reviews (review_author_id, book_id, review_text) VALUES
 (1, 13, 'some review text 8');
 
 
-INSERT INTO logs (user_id, message) VALUES
-(1, 'some log message 1'),
-(3, 'some log message 2'),
-(5, 'some log message 3'),
-(2, 'some log message 4'),
-(4, 'some log message 5'),
-(6, 'some log message 6'),
-(8, 'some log message 7'),
-(17, 'some log message 8'),
-(13, 'some log message 9'),
-(12, 'some log message 10'),
-(10, 'some log message 11'),
-(9, 'some log message 12');
+INSERT INTO logs (user_id, message, time) VALUES
+(1, 'some log message 1', now()),
+(3, 'some log message 2', now()),
+(5, 'some log message 3', now()),
+(2, 'some log message 4', now()),
+(4, 'some log message 5', now()),
+(6, 'some log message 6', now()),
+(8, 'some log message 7', now()),
+(17, 'some log message 8', now()),
+(13, 'some log message 9', now()),
+(12, 'some log message 10', now()),
+(10, 'some log message 11', now()),
+(9, 'some log message 12', now());
 
 
 INSERT INTO authors_books (author_id, book_id) VALUES
@@ -281,26 +281,26 @@ INSERT INTO genres_books (genre_id, book_id) VALUES
 (8, 32);
 
 
-INSERT INTO orders_books (order_id, book_id) VALUES
-(1, 12),
-(1, 2),
-(1, 24),
-(1, 25),
-(2, 12),
-(3, 11),
-(3, 1),
-(4, 1),
-(4, 6),
-(4, 29),
-(4, 30),
-(5, 14),
-(6, 19),
-(6, 9),
-(7, 8),
-(8, 7),
-(8, 6),
-(8, 16),
-(9, 26),
-(9, 23),
-(9, 22),
-(10, 21);
+INSERT INTO orders_books (order_id, book_id, quantity) VALUES
+(1, 12, 1),
+(1, 2, 1),
+(1, 24, 1),
+(1, 25, 1),
+(2, 12, 1),
+(3, 11, 1),
+(3, 1, 1),
+(4, 1, 1),
+(4, 6, 1),
+(4, 29, 1),
+(4, 30, 1),
+(5, 14, 1),
+(6, 19, 1),
+(6, 9, 1),
+(7, 8, 1),
+(8, 7, 1),
+(8, 6, 1),
+(8, 16, 1),
+(9, 26, 1),
+(9, 23, 1),
+(9, 22, 1),
+(10, 21, 1);
