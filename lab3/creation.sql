@@ -155,3 +155,78 @@ CREATE TABLE IF NOT EXISTS orders_books
 
 ALTER TABLE orders_books ADD COLUMN quantity INTEGER NOT NULL DEFAULT 1;
 
+
+
+------------------------------------------------------------------------
+
+
+
+CREATE TABLE IF NOT EXISTS roles
+(
+	id serial PRIMARY KEY,
+	name varchar(100) UNIQUE
+);
+
+INSERT INTO roles (name) VALUES
+('Пользователь'),
+('Работник'),
+('Администратор');
+
+ALTER TABLE users ADD COLUMN role_id serial;
+
+-- set roles for users
+UPDATE users SET role_id = 
+(
+    SELECT roles.id FROM roles WHERE roles.name = 
+    (
+        SELECT CASE WHEN EXISTS 
+        (
+            SELECT * FROM customers 
+            WHERE customers.user_id = users.id
+        ) 
+        THEN 'Пользователь'
+        ELSE 'Работник'
+        END
+    )
+);
+
+UPDATE users SET role_id = (
+    SELECT roles.id FROM roles WHERE roles.name = 'Администратор'
+) 
+WHERE id = 1;
+
+
+ALTER TABLE users
+    ADD CONSTRAINT fk_role FOREIGN KEY(role_id) 
+    REFERENCES roles(id) ON DELETE SET NULL;
+
+
+-- ORDERS: CUSTOMERS -> USERS
+ALTER TABLE orders DROP CONSTRAINT fk_customer;
+
+UPDATE orders SET customer_id = (SELECT users.id FROM users 
+                                 JOIN customers 
+                                 ON customers.user_id = users.id
+                                 WHERE customers.id = customer_id);
+
+ALTER TABLE orders RENAME COLUMN customer_id TO user_id;
+
+ALTER TABLE orders ADD CONSTRAINT fk_user 
+	FOREIGN KEY(user_id) 
+		REFERENCES users(id) ON DELETE SET NULL;
+
+-- REVIEWS: CUSTOMERS -> USERS
+ALTER TABLE reviews DROP CONSTRAINT fk_review_author;
+
+UPDATE reviews SET review_author_id = (SELECT users.id FROM users 
+                                       JOIN customers 
+                                       ON customers.user_id = users.id
+                                       WHERE customers.id = review_author_id);
+
+ALTER TABLE reviews ADD CONSTRAINT fk_review_author
+		FOREIGN KEY(review_author_id)
+			REFERENCES users(id) ON DELETE CASCADE;
+
+DROP TABLE customers;
+DROP TABLE employees;
+
