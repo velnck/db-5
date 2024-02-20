@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ publisher.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ publisher.name }}</h1>
+        <p>{{ publisher.address }}</p>
+        {% include 'catalog/books-list.html' with page_obj=page_obj %}
+    </div>
+{% endblock content %}

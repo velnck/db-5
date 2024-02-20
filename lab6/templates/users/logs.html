@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Журнал действий{% endblock title %}
+
+
+{% block content %}
+    {% for log in page_obj %}
+        <div class="container" style="width: 70%;">
+            <p><a href="{% url 'user-profile' user_id=log.user_id %}">
+                {{ log.username }}
+            </a> {{ log.message }}</p>
+            <time>{{ log.time }}</time>
+        <hr>
+        </div>
+    {% endfor %}
+    {% include 'include/pagination.html' %}
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Поставщики{% endblock title %}
+
+{% block content %}
+<div class="container justify-content-center" style="width: 70%; margin: 50px 15%;">
+    {% for supplier in suppliers %}
+    <div>
+        <h3>{{ supplier.name }}</h3>
+        <p>{{ supplier.phone }}</p>
+        <p>{{ supplier.email }}</p>
+        <p>{{ supplier.address }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock content %}

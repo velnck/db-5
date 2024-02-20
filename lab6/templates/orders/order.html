@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form class="form" action="{% url 'order' order_id=order.id %}" method="post">
+        {% csrf_token %}
+        <div style="text-align: center;">
+            Заказ №{{ order.id }}
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Адрес</label>
+            <input type="text" name="address"
+                   class="form-control" required="" value="{{ order.delivery_address }}">
+        </div>
+        {% for item in order.items %}
+            {% if item.book_id is not None %}
+                <p><a href="{% url 'book' id=item.book_id %}">{{ item.book_title }}</a></p>
+                <div class="input-group">
+                <span class="input-group-prepend">
+                    <a href="{% url 'remove-from-order' book_id=item.book_id order_id=order.id %}"
+                       type="button" class="btn btn-outline-secondary btn-number"
+                            data-type="minus" data-field="quant[1]">
+                        <span class="fa fa-minus">-</span>
+                    </a>
+                </span>
+                <input type="text" name="quant[1]" class="form-control input-number"
+                       value="{{ item.qt }}" min="0" max="20">
+                <span class="input-group-append">
+                    <a href="{% url 'add-to-order' book_id=item.book_id %}" type="button"
+                       class="btn btn-outline-secondary btn-number" data-type="plus" data-field="quant[1]">
+                        <span class="fa fa-plus">+</span>
+                    </a>
+                </span>
+            </div>
+            {% else %}
+                <p class="text-muted">Нет товаров</p>
+            {% endif %}
+        {% endfor %}
+        {% if order.sum_total is not None %}
+            <p>Сумма: {{ order.sum_total }}</p>
+        {% endif %}
+        <input type="submit" class="btn btn-primary" name="Submit">
+    </form>
+</div>
+
+{% endblock content %}

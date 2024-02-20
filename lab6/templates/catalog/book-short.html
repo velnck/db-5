@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'book' id=book.id %}">
+            {{ book.title }}</a>
+        </h5>
+        <p class="card-text">Price: {{ book.price }}</p>
+        {% for a in book.authors %}
+            <p class="card-text text-muted">
+                <a href="{% url 'author' id=a.id %}">{{ a.name }}</a>
+            </p>
+        {% endfor %}
+    </div>
+</div>

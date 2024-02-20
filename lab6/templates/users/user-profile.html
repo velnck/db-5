@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3>{{ user.username }}</h3>
+        <p style="font-weight: bolder">{{ user.name }}</p>
+        <p>{{ user.email }}</p>
+        <p>{{ user.phone_number }}</p>
+        {% if request.user.is_authenticated %}
+            {% if user == request.user %}
+                <a class="nav-link" href="{% url 'update-profile' user_id=user.id %}">Update profile</a>
+            {% endif %}
+        {% endif %}
+        {% if request.user.is_superuser %}
+            {% if not user.is_staff %}
+                <a href="{% url 'update-role' user_id=user.id %}"
+                   class="btn btn-secondary" type="button">
+                    Изменить роль на "Работник"
+                </a>
+            {% else %}
+                <p>Работник</p>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

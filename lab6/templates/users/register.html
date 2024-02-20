@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'users/registerToasts.js' %}" type="module"></script>
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="container" id="main-container">
+        <form class="form" method="post">
+            {% csrf_token %}
+            <h1>Register</h1>
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label for="password" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary submit-register">Submit</button>
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
+{% endblock content %}

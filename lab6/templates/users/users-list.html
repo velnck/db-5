@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Клиенты{% endblock title %}
+
+{% block content %}
+<div class="container justify-content-center" style="width: 70%; margin: 50px 15%;">
+    {% for user in users %}
+    <div>
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.username }}</p>
+        <p>{{ user.phone_number }}</p>
+        <p>{{ user.email }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock content %}

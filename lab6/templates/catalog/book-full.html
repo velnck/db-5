@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Book{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ book.title }}</h1>
+        {% for author in authors %}
+            <p>
+                <a href="{% url 'author' id=author.id %}">{{ author.name }}</a>
+            </p>
+        {% endfor %}
+        {% for genre in book.genres_list %}
+            <a href="{% url 'genre' id=genre.id %}">{{ genre.name }}</a>
+        {% endfor %}
+        <p>ISBN: {{ book.isbn }}</p>
+        <p>Издательство:
+            <a href="{% url 'publisher' id=book.publisher_id %}">
+            {{ book.publisher_name }}
+        </a></p>
+        <p>Цена: {{ book.price }}</p>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'add-to-order' book_id=book.id %}"
+           class="btn btn-primary" style="margin-bottom: 50px;">Добавить в заказ</a>
+        {% endif %}
+    </div>
+
+    <div class="container" style="border-top: solid">
+        <div class="reviews-wrapper">
+            <h3 style="text-align: center; margin-top: 40px">Reviews</h3>
+            {% for review in reviews %}
+                <div class="review">
+                    <a href="{% url 'user-profile' review.review_author_id %}">
+                        {{ review.username }}
+                    </a>
+                    <br>{{ review.review_text }}
+                </div>
+            {% endfor %}
+            {% if request.user.is_authenticated %}
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    {% for field in review_form %}
+                        <div class="mb-3">
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 40px;">Done</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock content %}

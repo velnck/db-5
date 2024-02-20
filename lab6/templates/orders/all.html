@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Заказы{% endblock title %}
+
+
+{% block content %}
+    {% for order in orders %}
+        <div class="container">
+            <h2><a href="{% url 'order' order_id=order.id %}">Заказ №{{ order.id }}</a></h2>
+            <p><a href="{% url 'user-profile' user_id=order.user_id %}">
+                {{ order.username }}
+            </a></p>
+            {% if order.delivery_address != "" and order.delivery_address is not None%}
+                <p>Адрес: {{ order.delivery_address }}</p>
+            {% endif %}
+            {% for item in order.items %}
+                {% if item.book_id is not None %}
+                    <p><a href="{% url 'book' id=item.book_id %}">{{ item.book_title }}</a></p>
+                    <p>Количество: {{ item.qt }}</p>
+                {% else %}
+                    <p class="text-muted">Нет товаров</p>
+                {% endif %}
+            {% endfor %}
+            {% if order.sum_total is not None %}
+                <p>Сумма: {{ order.sum_total }}</p>
+            {% endif %}
+            {% if request.user.is_staff %}
+                <a href="{% url 'delete-order' order_id=order.id %}" class="btn btn-outline-danger">
+                    Удалить
+                </a>
+            {% endif %}
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock content %}
